@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Seinfeld Trivia Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row" id="title">
+      <h1>SEINFELD TRIVIA GAME</h1>
+    </div>
+    <div class="row" id="content">
+      <div id="que"></div>
+    </div>
+  </div>
+  
+<script
+  src="http://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+//<iframe width="0" height="0" src="https://www.youtube.com/embed/_V2sBURgUBI?autoplay=1"> 
+//  </iframe>
+$(document).ready(function() {
+  var cAnswers = 0
+  var trivia = [
+    {
+      question: "According to Jerry, which of the following is NOT a lesser babka?", 
+      answers: [
+        "<p id='correct'>Cinnamon</p", 
+        "<p id ='wrong'>Chocolate</p>", 
+        "<p id ='wrong'>Cherry Rum</p>", 
+        "<p id ='wrong'>Black and White</p>"
+      ]
+    },
+    { 
+      question: "The morning of the marathon, why did Jean-Paul oversleep his alarm while staying with Jerry?", 
+      answers: [
+        "<p id='wrong'>The am-pm switch was wrong.</p>", 
+        "<p id='correct'>Kramer overloaded the building's power.</p>", 
+        "<p id ='wrong'>Kramer got him drunk the night before.</p>", 
+        "<p id='wrong'>The volume was turned down.</p>"
+      ]
+    },
+    {
+      question: "Elaine's co-worker was calling her by the wrong name. This led to Elaine inventing and ultimately killing off a fictional woman of the same name - what was the name?", 
+      answers: [
+        "<p id='wrong'>Helen</p>", 
+        "<p id='wrong'>Noreen</p>", 
+        "<p id='correct'>Susie</p>", 
+        "<p id='wrong'>Dolores</p>"
+      ]
+    },
+    {
+      question: "Which of the following is NOT a way George and Jerry described Elaine's dancing?", 
+      answers: [
+        "<p id='correct'>1</p>", 
+        "<p id='wrong'>2</p>", 
+        "<p id='correct'>3</p>", 
+        "<p id='wrong'>4</p>"
+      ]
+    },
+    {
+      question: "Elaine's hatred of what popular movie got her temporarily fired from her job with J. Peterman?", 
+      answers: [
+      "<p id='wrong'>Schindler's List</p>", 
+      "<p id='wrong'>Out of Africa</p>", 
+      "<p id='correct'>The English Patient</p>", 
+      "<p id='wrong'>Four Weddings and a Funeral</p>",
+      ]
+    },
+    {
+      question: "What is the name of the charity George invented to avoid buying Christmas presents for his co-workers?</p>", 
+      answers: [
+      "<p id='wrong'>Money for People</p>", 
+      "<p id='correct'>The Human Fund</p>", 
+      "<p id='wrong'>Kramerica Industries</p>", 
+      "<p id='wrong'>Serenity Now</p>"
+      ]
+    },
+    {
+    question: "George always wanted to pretend to have what career?",
+    answers: [
+      "<p id='wrong'>Importer-exporter.</p>", 
+      "<p id='correct'>Architect.</p>", 
+      "<p id='wrong'>Marine biologist.</p>", 
+      "<p id='wrong'>City planner.</p>"
+    ]
+    }
+  ]
+
+  trivia.sort (function(a, b) {
+    return 0.5 - Math.random()}),
+  trivia[0].answers.sort (function(a,b) {
+    return 0.5 - Math.random()}),
+
+  $("#que").html("<h3>" + trivia[0].question + "</h3>")
+  $("#que").append(trivia[0].answers)
+
+  $("#correct").on("click", function () {
+    alert("correct")
+    cAnswers++
+    $("#que").html("<h3>" + trivia[cAnswers].question + "</h3>")
+    $("#que").append(trivia[cAnswers].answers)
+  })
+    
+  //  $("#question").html("<h3>Question #2:</h3><p>" + trivia[1])
+  //  $("#question").html("<h3>Question #3:</h3><p>" + trivia[2])
+  //  $("#question").html("<h3>Question #4:</h3><p>" + trivia[3])
+    console.log(trivia[cAnswers].question)
+})
+</script>
+</body>
+</html>
