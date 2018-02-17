@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,111 +9,296 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
-</head>
+  </head>
 <body>
   <div class="container">
-    <div class="row" id="title">
-      <h1>SEINFELD TRIVIA GAME</h1>
+    <div class="row">
+      <div class="col-md-2">
+        <div id="countdown"></div>
+      </div>
+      <div class="col-md-8">
+        <h1>SEINFELD TRIVIA GAME</h1>
+      </div>
+      <div class="col-md-2"></div>
     </div>
-    <div class="row" id="content">
-      <div id="que"></div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          <div id="que"></div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" id="answ">
+        <div id="succfail"></div>
+      </div>
+      <div class="col-md-2"></div>
     </div>
   </div>
-  
-<script
-  src="http://code.jquery.com/jquery-2.2.4.js"
-  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-  crossorigin="anonymous"></script>
+<iframe width="0" height="0" src="https://www.youtube.com/embed/_V2sBURgUBI?autoplay=1"> 
+  </iframe>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" 
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" 
+    crossorigin="anonymous"></script> 
 <script type="text/javascript">
-//<iframe width="0" height="0" src="https://www.youtube.com/embed/_V2sBURgUBI?autoplay=1"> 
-//  </iframe>
 $(document).ready(function() {
+  var aAnswers = 0
   var cAnswers = 0
+  var wAnswers = 0
+  var Time = 90
+ // var correctAnswer = ""
   var trivia = [
-    {
-      question: "According to Jerry, which of the following is NOT a lesser babka?", 
+    { //0
+      question: 'According to Jerry, which of the following is NOT a "lesser babka"?', 
       answers: [
-        "<p id='correct'>Cinnamon</p", 
-        "<p id ='wrong'>Chocolate</p>", 
-        "<p id ='wrong'>Cherry Rum</p>", 
-        "<p id ='wrong'>Black and White</p>"
+        "<div class='correct' value='Cinnamon'>Cinnamon</div>", 
+        "<div class='wrong'>Chocolate</div>", 
+        "<div class='wrong'>Cherry Rum</div>", 
+        "<div class='wrong'>Black and White</div>"
       ]
     },
-    { 
-      question: "The morning of the marathon, why did Jean-Paul oversleep his alarm while staying with Jerry?", 
+    { //1
+      question: "The morning of the New York City Marathon, why does Jean-Paul oversleep his alarm?", 
       answers: [
-        "<p id='wrong'>The am-pm switch was wrong.</p>", 
-        "<p id='correct'>Kramer overloaded the building's power.</p>", 
-        "<p id ='wrong'>Kramer got him drunk the night before.</p>", 
-        "<p id='wrong'>The volume was turned down.</p>"
+        "<div class='wrong'>The am-pm switch was wrong.</div>", 
+        "<div class='correct'>Kramer overloaded the power in the building.</div>", 
+        "<div class='wrong'>Kramer got him drunk the night before.</div>", 
+        "<div class='wrong'>The volume was turned down.</div>"
       ]
     },
-    {
-      question: "Elaine's co-worker was calling her by the wrong name. This led to Elaine inventing and ultimately killing off a fictional woman of the same name - what was the name?", 
+    { //2
+      question: "Elaine's co-worker starts calling her by the wrong name. This leads Elaine to invent and ultimately kill off a fictional woman of the same name - what is the name?", 
       answers: [
-        "<p id='wrong'>Helen</p>", 
-        "<p id='wrong'>Noreen</p>", 
-        "<p id='correct'>Susie</p>", 
-        "<p id='wrong'>Dolores</p>"
+        "<div class='wrong'>Helen</div>", 
+        "<div class='wrong'>Noreen</div>", 
+        "<div class='correct'>Susie</div>", 
+        "<div class='wrong'>Dolores</div>"
       ]
     },
-    {
-      question: "Which of the following is NOT a way George and Jerry described Elaine's dancing?", 
+    { //3
+      question: "Elaine's hatred of what popular movie gets her temporarily fired from her job with J. Peterman?", 
       answers: [
-        "<p id='correct'>1</p>", 
-        "<p id='wrong'>2</p>", 
-        "<p id='correct'>3</p>", 
-        "<p id='wrong'>4</p>"
+        "<div class='wrong'>Schindler's List</div>", 
+        "<div class='wrong'>Out of Africa</div>", 
+        "<div class='correct'>The English Patient</div>", 
+        "<div class='wrong'>Four Weddings and a Funeral</div>",
       ]
     },
-    {
-      question: "Elaine's hatred of what popular movie got her temporarily fired from her job with J. Peterman?", 
+    { //4
+      question: "What is the name of the charity George invents to avoid buying Christmas presents for his co-workers?", 
       answers: [
-      "<p id='wrong'>Schindler's List</p>", 
-      "<p id='wrong'>Out of Africa</p>", 
-      "<p id='correct'>The English Patient</p>", 
-      "<p id='wrong'>Four Weddings and a Funeral</p>",
+        "<div class='wrong'>Money for People</div>", 
+        "<div class='correct'>The Human Fund</div>", 
+        "<div class='wrong'>Kramerica Industries</div>", 
+        "<div class='wrong'>Serenity Now</div>"
       ]
     },
-    {
-      question: "What is the name of the charity George invented to avoid buying Christmas presents for his co-workers?</p>", 
+    { //5
+      question: "What bakery product does Jerry steal from an elderly woman on the street?",
       answers: [
-      "<p id='wrong'>Money for People</p>", 
-      "<p id='correct'>The Human Fund</p>", 
-      "<p id='wrong'>Kramerica Industries</p>", 
-      "<p id='wrong'>Serenity Now</p>"
-      ]
+        "<div class='correct'>A Marble Rye</div>", 
+        "<div class='wrong'>A Chocolate Babka</div>", 
+        "<div class='wrong'>A Bag of Muffin Tops</div>", 
+        "<div class='wrong'>A Black and White Cookie</div>"
+    ]
     },
-    {
-    question: "George always wanted to pretend to have what career?",
-    answers: [
-      "<p id='wrong'>Importer-exporter.</p>", 
-      "<p id='correct'>Architect.</p>", 
-      "<p id='wrong'>Marine biologist.</p>", 
-      "<p id='wrong'>City planner.</p>"
+    { //6
+      question: 'Which of the other characters is George "a little scared of" due to an incident with a panama hat?',
+      answers: [
+        "<div class='wrong'>Jerry</div>", 
+        "<div class='correct'>Elaine</div>", 
+        "<div class='wrong'>Kramer</div>", 
+        "<div class='wrong'>Estelle Costanza</div>"
+    ]
+    },
+    { //7
+      question: 'According to Jerry, "too many people know the combination" to Elaine'+"'s vault. What is that combination?",
+      answers: [
+        "<div class='wrong'>Flattery</div>", 
+        "<div class='correct'>Alcohol</div>", 
+        "<div class='wrong'>Bribery</div>", 
+        "<div class='wrong'>Confrontation</div>"
+    ]
+    },
+    { //8
+      question: "Which side character is spotted using a knife and fork to eat a candy bar?",
+      answers: [
+        "<div class='wrong'>David Puddy</div>", 
+        "<div class='correct'>Mr. Pitt</div>", 
+        "<div class='wrong'>J. Peterman</div>", 
+        "<div class='wrong'>Tim Whatley</div>"
+    ]
+    },
+    { //9
+      question: "Kramer accuses Jerry of being prejudiced against what group of people?",
+      answers: [
+        "<div class='wrong'>The Unfunny</div>", 
+        "<div class='correct'>Dentists</div>", 
+        "<div class='wrong'>Accountants</div>", 
+        "<div class='wrong'>The Uninformed</div>"
+    ]
+    },
+    { //10
+      question: "David Puddy has what common phobia?",
+      answers: [
+        "<div class='wrong'>Claustrophobia</div>", 
+        "<div class='wrong'>Arachnophobia</div>", 
+        "<div class='wrong'>Coulrophobia (Fear of Clowns)</div>", 
+        "<div class='correct'>Germophobia</div>"
+    ]
+    },
+    { //11
+      question: 'When George creates a "candy lineup" to trap a supposed candy bar thief, what kind of candy bar has been stolen from him?',
+      answers: [
+        "<div class='wrong'>A Milky Way</div>", 
+        "<div class='correct'>A Twix</div>", 
+        "<div class='wrong'>A Snickers</div>", 
+        "<div class='wrong'>A Three Musketeers</div>"
+    ]
+    },
+    { //12
+      question: "Which of the following is NOT a traditional element of festivus?",
+      answers: [
+        "<div class='wrong'>An airing of grievances</div>", 
+        "<div class='wrong'>The feats of strength</div>", 
+        "<div class='wrong'>An aluminum pole</div>", 
+        "<div class='correct'>A steam bath</div>"
+    ]
+    },
+    { //13
+      question: "Jerry could be the first pirate. Does Jerry want to be a pirate?",
+      answers: [
+        "<div class='wrong'>Yes</div>", 
+        "<div class='correct'>No</div>"
+    ]
+    },
+    { //14
+      question: "Which of the following is NOT a traditional element of festivus?",
+      answers: [
+        "<div class='wrong'>An airing of grievances.</div>", 
+        "<div class='wrong'>Feats of strength.</div>", 
+        "<div class='wrong'>An aluminum pole.</div>", 
+        "<div class='correct'>A steam bath.</div>"
+    ]
+    },
+    { //15
+      question: "Which of the following is NOT a traditional element of festivus?",
+      answers: [
+        "<div class='wrong'>An airing of grievances.</div>", 
+        "<div class='wrong'>Feats of strength.</div>", 
+        "<div class='wrong'>An aluminum pole.</div>", 
+        "<div class='correct'>A steam bath.</div>"
+    ]
+    },
+    { //16
+      question: "Which of the following is NOT a traditional element of festivus?",
+      answers: [
+        "<div class='wrong'>An airing of grievances.</div>", 
+        "<div class='wrong'>Feats of strength.</div>", 
+        "<div class='wrong'>An aluminum pole.</div>", 
+        "<div class='correct'>A steam bath.</div>"
+    ]
+    },
+    { //17
+      question: "Which of the following is NOT a traditional element of festivus?",
+      answers: [
+        "<div class='wrong'>An airing of grievances.</div>", 
+        "<div class='wrong'>Feats of strength.</div>", 
+        "<div class='wrong'>An aluminum pole.</div>", 
+        "<div class='correct'>A steam bath.</div>"
+    ]
+    },
+    { //18
+      question: "Which of the following is NOT a traditional element of festivus?",
+      answers: [
+        "<div class='wrong'>An airing of grievances.</div>", 
+        "<div class='wrong'>Feats of strength.</div>", 
+        "<div class='wrong'>An aluminum pole.</div>", 
+        "<div class='correct'>A steam bath.</div>"
+    ]
+    },
+    { //19
+      question: "Which of the following is NOT a traditional element of festivus?",
+      answers: [
+        "<div class='wrong'>An airing of grievances.</div>", 
+        "<div class='wrong'>Feats of strength.</div>", 
+        "<div class='wrong'>An aluminum pole.</div>", 
+        "<div class='correct'>A steam bath.</div>"
+    ]
+    },
+    { //20
+      question: "Which of the following is NOT a traditional element of festivus?",
+      answers: [
+        "<div class='wrong'>An airing of grievances.</div>", 
+        "<div class='wrong'>Feats of strength.</div>", 
+        "<div class='wrong'>An aluminum pole.</div>", 
+        "<div class='correct'>A steam bath.</div>"
     ]
     }
   ]
 
   trivia.sort (function(a, b) {
-    return 0.5 - Math.random()}),
+    return 0.5 - Math.random()
+  })
+
   trivia[0].answers.sort (function(a,b) {
-    return 0.5 - Math.random()}),
+    return 0.5 - Math.random()
+  })
+  //correctAnswer = $(".correct").val(function() {
+  //})
+  $("#countdown").text(Time+" secs")
+
+  var myTimer = setInterval(function() {
+    Time--
+    $("#countdown").text(Time+" secs")
+  }, 1000)
 
   $("#que").html("<h3>" + trivia[0].question + "</h3>")
-  $("#que").append(trivia[0].answers)
-
-  $("#correct").on("click", function () {
-    alert("correct")
+  $("#answ").html(trivia[0].answers)
+  
+  $(document).on("click", ".correct", function () {
+    $("#answ").html("<div id='succfail'>Correct!</div>")
     cAnswers++
-    $("#que").html("<h3>" + trivia[cAnswers].question + "</h3>")
-    $("#que").append(trivia[cAnswers].answers)
+    aAnswers++
+    var myVar = setTimeout(function() {
+    if (aAnswers < 19) {
+      trivia[aAnswers].answers.sort (function(a,b) {
+        return 0.5 - Math.random()
+      })
+      $("#que").html("<h3>" + trivia[aAnswers].question + "</h3>")
+      $("#answ").html(trivia[aAnswers].answers)
+     // correctAnswer=$(".correct").val()
+      console.log(aAnswers)
+    }
+
+    if (aAnswers == 19) {
+      $("#que").text("<h3>Your Results</h3>")
+      $("#succfail").html("<div id=results>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div id=results>Judgment: "+wAnswers+"</div>")
+    }
+    }, 2000)
   })
-    
-  //  $("#question").html("<h3>Question #2:</h3><p>" + trivia[1])
-  //  $("#question").html("<h3>Question #3:</h3><p>" + trivia[2])
-  //  $("#question").html("<h3>Question #4:</h3><p>" + trivia[3])
-    console.log(trivia[cAnswers].question)
+
+  $(document).on("click", ".wrong", function () {
+    $("#answ").html("<div id='succfail'>Wrong! The correct answer was:"+$(".correct")+"</div>")
+    //console.log($(".correct").val())
+    wAnswers++
+    aAnswers++
+    var myVar = setTimeout(function() {
+    if (aAnswers < 19) {
+      trivia[aAnswers].answers.sort (function(a,b) {
+        return 0.5 - Math.random()
+      })
+      $("#que").html("<h3>" + trivia[aAnswers].question + "</h3>")
+      $("#answ").html(trivia[aAnswers].answers)
+      console.log(aAnswers)
+    }
+    if (aAnswers == 19) {
+      $("#que").html("<h3>Your Results</h3>")
+      $("#succfail").html("<div id=results>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div id=results>Judgment: "+wAnswers+"</div>")
+    }
+    }, 2000)
+  })  
 })
 </script>
 </body>

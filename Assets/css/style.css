@@ -1,34 +1,78 @@
 body {
-    background-color: lightyellow;
+    background-image: url(../images/diner.jpg);
+    background-repeat: no-repeat;
+    background-color: lightblue;
+    background-size: 1500px 800px;
 }
 
 h1 {
     text-align: center;
-    padding: 10px 0px 20px 0px;
-    color: black;
-    font-family: monospace;
+    padding: 30px 0px 70px 0px;
+    color: rgb(209, 98, 57);
+    margin: 30px 0px 20px 0px;
+    background-color: rgb(250, 218, 37);
     height: 50px;
+    font-style: bold;
+    text-shadow: 2px 2px black;
+    outline-style: dotted;
+    outline-width: 5px;
 }
 row {
     width: 100%;
 }
 
 h3 {
-    background-color: darkblue;
-    padding: 10px;
-    color: white;
+    background-color: white;
+    padding: 20px;
+    color: black;
     width: 100%;
+    margin: 10px 0px 30px 0px;
+    line-height: 1.5;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: rgb(209, 98, 57);
+    border-width: 10px;
 }
 
-#question {
-    color: goldenrod;
+#que {
+    color: darkgray;
+    font-size: 25px;    
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+}
+.correct, .wrong {
+    padding: 10px;
+    font-size: 25px;    
+    text-align: center;
+    font-family: helvetica;
+    font-style: bold;
+    background-color: lightblue;
+    border-radius: 20px;
+} 
+.correct:hover, .wrong:hover {
+    background-color: rgb(58, 14, 14);
+    color: white;
+}
+#succfail {
+    text-align: center;
+    padding: 30px;
+    font-size: 40px;
+    background-color: lightblue;
+    border-radius: 50px;
 }
 
-p {
-    color: black;
+#countdown {
+    text-align: center;
     font-size: 20px;
+    color: white;
+    width: 105px;
+    background-color: black;
+    border-radius: 50px;
+    border-style: dotted;
+    padding: 25px 15px 25px 15px;
+    margin: 23px 10px 0px 0px;
+
 }
 iframe {
     visibility: hidden;
