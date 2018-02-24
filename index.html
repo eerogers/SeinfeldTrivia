@@ -342,13 +342,13 @@ var myTimer = setInterval(function() {
         return 0.5 - Math.random()
       })
       $("#que").html("<h3 style='visibility:visible'>" + trivia[aAnswers].question + "</h3>")
-      $("#answ").html("<div id='answ' style='visibility:visible'>"+trivia[aAnswers].answers+"</div>")
+      $("#answ").html("<div id='answ' style='visibility:visible'>" + trivia[aAnswers].answers + "</div>")
       isPaused = false
       Time= 31
     }
     if (aAnswers == 19) {
       $("#que").html("<h3 style='visibility:visible'>Your Results</h3>")
-      $("#answ").html("<div id='results'>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div class='text-center'><button id='reset'>RESET</button></div>")
+      $("#answ").html("<div id='results'>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: " + wAnswers + "</div><div class='text-center'><button id='reset'>RESET</button></div>")
       isPaused = true
     }
     }, 3500)
@@ -370,7 +370,6 @@ var myTimer = setInterval(function() {
     $("#countdown").text(Time+" secs")
     isPaused = false
   })
-
 })
 
 </script>
