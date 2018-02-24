@@ -34,6 +34,7 @@
         <div id="succfail"></div>
       </div>
       <div class="col-md-2"></div>
+      <div class="text-center"><button id="start">START</button></div>
     </div>
   </div>
 <iframe width="0" height="0" src="https://www.youtube.com/embed/_V2sBURgUBI?autoplay=1"> 
@@ -43,11 +44,21 @@
     crossorigin="anonymous"></script> 
 <script type="text/javascript">
 $(document).ready(function() {
+  var isStarted = false
   var aAnswers = 0
   var cAnswers = 0
   var wAnswers = 0
-  var Time = 90
- // var correctAnswer = ""
+  var Time = 30
+
+  $("#start").click(function() {
+    $("#start").css("visibility", "hidden")
+    $("h1").css("visibility", "visible")
+    $("h3").css("visibility", "visible")
+    $("#answ").css("visibility", "visible")
+    $("#countdown").css("visibility", "visible")
+    isStarted = true
+    reStart()
+  })
   var trivia = [
     { //0
       question: 'According to Jerry, which of the following is NOT a "lesser babka"?', 
@@ -61,14 +72,14 @@ $(document).ready(function() {
     { //1
       question: "The morning of the New York City Marathon, why does Jean-Paul oversleep his alarm?", 
       answers: [
-        "<div class='wrong'>The am-pm switch was wrong.</div>", 
-        "<div class='correct'>Kramer overloaded the power in the building.</div>", 
+        "<div class='wrong'>The am-pm switch was on the wrong setting.</div>", 
+        "<div class='correct'>Kramer blew out the power in the building.</div>", 
         "<div class='wrong'>Kramer got him drunk the night before.</div>", 
-        "<div class='wrong'>The volume was turned down.</div>"
+        "<div class='wrong'>The alarm volume was turned down.</div>"
       ]
     },
     { //2
-      question: "Elaine's co-worker starts calling her by the wrong name. This leads Elaine to invent and ultimately kill off a fictional woman of the same name - what is the name?", 
+      question: "Elaine's co-worker starts calling her by the wrong name. This leads Elaine to invent and ultimately kill off a fictional woman of the same name - what is that name?", 
       answers: [
         "<div class='wrong'>Helen</div>", 
         "<div class='wrong'>Noreen</div>", 
@@ -149,91 +160,91 @@ $(document).ready(function() {
     ]
     },
     { //11
-      question: 'When George creates a "candy lineup" to trap a supposed candy bar thief, what kind of candy bar has been stolen from him?',
+      question: 'What kind of candy bar is stolen from George, prompting him to create a "candy lineup" to trap the supposed thief?',
       answers: [
-        "<div class='wrong'>A Milky Way</div>", 
-        "<div class='correct'>A Twix</div>", 
-        "<div class='wrong'>A Snickers</div>", 
-        "<div class='wrong'>A Three Musketeers</div>"
+        "<div class='wrong'>Milky Way</div>", 
+        "<div class='correct'>Twix</div>", 
+        "<div class='wrong'>Snickers</div>", 
+        "<div class='wrong'>Three Musketeers</div>"
     ]
     },
     { //12
       question: "Which of the following is NOT a traditional element of festivus?",
       answers: [
-        "<div class='wrong'>An airing of grievances</div>", 
-        "<div class='wrong'>The feats of strength</div>", 
-        "<div class='wrong'>An aluminum pole</div>", 
-        "<div class='correct'>A steam bath</div>"
+        "<div class='wrong'>An airing of grievances.</div>", 
+        "<div class='wrong'>The feats of strengths.</div>", 
+        "<div class='wrong'>An aluminum pole.</div>", 
+        "<div class='correct'>A steam bath.</div>"
     ]
     },
     { //13
-      question: "Jerry could be the first pirate. Does Jerry want to be a pirate?",
+      question: "Does Jerry want to be a pirate?",
       answers: [
         "<div class='wrong'>Yes</div>", 
         "<div class='correct'>No</div>"
     ]
     },
     { //14
-      question: "Which of the following is NOT a traditional element of festivus?",
+      question: "Jerry bounced a themed check at the bodega. What was that theme?",
       answers: [
-        "<div class='wrong'>An airing of grievances.</div>", 
-        "<div class='wrong'>Feats of strength.</div>", 
-        "<div class='wrong'>An aluminum pole.</div>", 
-        "<div class='correct'>A steam bath.</div>"
+        "<div class='wrong'>Superheroes</div>", 
+        "<div class='wrong'>Water Lilies</div>", 
+        "<div class='wrong'>Horses</div>", 
+        "<div class='correct'>Clowns</div>"
     ]
     },
     { //15
-      question: "Which of the following is NOT a traditional element of festivus?",
+      question: "Jerry dates which Miss America contestant?",
       answers: [
-        "<div class='wrong'>An airing of grievances.</div>", 
-        "<div class='wrong'>Feats of strength.</div>", 
-        "<div class='wrong'>An aluminum pole.</div>", 
-        "<div class='correct'>A steam bath.</div>"
+        "<div class='wrong'>Miss New Jersey</div>", 
+        "<div class='wrong'>Miss New York</div>", 
+        "<div class='wrong'>Miss Connecticut</div>", 
+        "<div class='correct'>Miss Rhode Island</div>"
     ]
     },
     { //16
-      question: "Which of the following is NOT a traditional element of festivus?",
+      question: "George is forced to buy a book at Brentano's because he did what with it?",
       answers: [
-        "<div class='wrong'>An airing of grievances.</div>", 
-        "<div class='wrong'>Feats of strength.</div>", 
-        "<div class='wrong'>An aluminum pole.</div>", 
-        "<div class='correct'>A steam bath.</div>"
+        "<div class='wrong'>He took it outside.</div>", 
+        "<div class='wrong'>He bent the spine.</div>", 
+        "<div class='wrong'>He spilled soup on it.</div>", 
+        "<div class='correct'>He took it into the bathroom.</div>"
     ]
     },
     { //17
-      question: "Which of the following is NOT a traditional element of festivus?",
+      question: 'In "The Parking Garage," what large object has Kramer just bought at the mall?',
       answers: [
-        "<div class='wrong'>An airing of grievances.</div>", 
-        "<div class='wrong'>Feats of strength.</div>", 
-        "<div class='wrong'>An aluminum pole.</div>", 
-        "<div class='correct'>A steam bath.</div>"
+        "<div class='wrong'>A television.</div>", 
+        "<div class='wrong'>A mini-fridge.</div>", 
+        "<div class='wrong'>A generator.</div>", 
+        "<div class='correct'>An air-conditioner.</div>"
     ]
     },
     { //18
-      question: "Which of the following is NOT a traditional element of festivus?",
+      question: "How does Jerry know the untalented comedienne, Sally Weaver?",
       answers: [
-        "<div class='wrong'>An airing of grievances.</div>", 
-        "<div class='wrong'>Feats of strength.</div>", 
-        "<div class='wrong'>An aluminum pole.</div>", 
-        "<div class='correct'>A steam bath.</div>"
+        "<div class='wrong'>She and Elaine were college roommates.</div>", 
+        "<div class='wrong'>She used to date Kenny Banya.</div>", 
+        "<div class='wrong'>They used to date.</div>", 
+        "<div class='correct'>She and Susan Ross were college roommates.</div>"
     ]
     },
     { //19
-      question: "Which of the following is NOT a traditional element of festivus?",
+      question: "Jerry hates anyone who had one of these animals growing up:",
       answers: [
-        "<div class='wrong'>An airing of grievances.</div>", 
-        "<div class='wrong'>Feats of strength.</div>", 
-        "<div class='wrong'>An aluminum pole.</div>", 
-        "<div class='correct'>A steam bath.</div>"
+        "<div class='wrong'>Golden Retrievers</div>", 
+        "<div class='wrong'>Parrots</div>", 
+        "<div class='wrong'>Hampsters</div>", 
+        "<div class='correct'>Ponies</div>"
     ]
     },
     { //20
-      question: "Which of the following is NOT a traditional element of festivus?",
+      question: 'What prompts Kramer'+"'"+'s attorney Jackie Chiles to say: "This is the most public yet of my many humiliations."?',
       answers: [
-        "<div class='wrong'>An airing of grievances.</div>", 
-        "<div class='wrong'>Feats of strength.</div>", 
-        "<div class='wrong'>An aluminum pole.</div>", 
-        "<div class='correct'>A steam bath.</div>"
+        "<div class='wrong'>Kramer being sent to jail at the end of the series.</div>", 
+        "<div class='wrong'>Kramer accepting the low-ball offer of unlimited coffee for life.</div>", 
+        "<div class='wrong'>Sue Ellen Mischke's bra "+'"'+'not fitting'+'"'+' when she tries it on over her clothes in court.</div>', 
+        "<div class='correct'>Kramer's settlement with the tobacco company: a giant advertisement featuring his image.</div>"
     ]
     }
   ]
@@ -245,61 +256,123 @@ $(document).ready(function() {
   trivia[0].answers.sort (function(a,b) {
     return 0.5 - Math.random()
   })
-  //correctAnswer = $(".correct").val(function() {
-  //})
+
   $("#countdown").text(Time+" secs")
-
-  var myTimer = setInterval(function() {
-    Time--
-    $("#countdown").text(Time+" secs")
-  }, 1000)
-
   $("#que").html("<h3>" + trivia[0].question + "</h3>")
-  $("#answ").html(trivia[0].answers)
+  $("#answ").html("<div>"+trivia[0].answers+"</div>")
   
+var isPaused= false
+
+function reStart(){
+var myTimer = setInterval(function() {
+  if (!isPaused && isStarted && Time > 0) {
+  Time--
+  $("#countdown").text(Time+" secs")
+  }
+  if (Time <= 0) {
+    timesUp()
+    clearInterval(myTimer)
+  }
+}, 1000)
+}
+
+  function timesUp() {
+    if (aAnswers < 19) {
+      isPaused = true
+      var correctAnswer = $('.correct').text()
+      $("#answ").html("<div id='succfail'>Time's Up!<p>The correct answer was:</p>"+correctAnswer+"</div>")
+      wAnswers++
+      aAnswers++
+      trivia[aAnswers].answers.sort (function(a,b) {
+        return 0.5 - Math.random()
+      })
+      var myVar1 = setTimeout(function() { 
+        $("#que").html("<h3 style='visibility:visible'>" + trivia[aAnswers].question + "</h3>")
+        $("#answ").html("<div id='answ' style='visibility:visible'>"+trivia[aAnswers].answers+"</div>")
+        Time = 31
+        $("#countdown").text(Time+" secs")
+        isPaused = false 
+      
+      reStart()
+      }, 3500)
+      
+    }
+    if (aAnswers == 19) {
+      $("#que").html("<h3 style='visibility:visible'>Your Results</h3>")
+      $("#answ").html("<div id='results'>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div class='text-center'><button id='reset'>RESET</button></div>")
+      isPaused = true
+    }
+  }
+
   $(document).on("click", ".correct", function () {
     $("#answ").html("<div id='succfail'>Correct!</div>")
     cAnswers++
     aAnswers++
-    var myVar = setTimeout(function() {
+    isPaused= true
+    console.log(aAnswers)
+    var myVar2 = setTimeout(function() {
     if (aAnswers < 19) {
       trivia[aAnswers].answers.sort (function(a,b) {
         return 0.5 - Math.random()
       })
-      $("#que").html("<h3>" + trivia[aAnswers].question + "</h3>")
-      $("#answ").html(trivia[aAnswers].answers)
-     // correctAnswer=$(".correct").val()
+      $("#que").html('<h3 style="visibility:visible">' + trivia[aAnswers].question + "</h3>")
+      $("#answ").html("<div id='answ' style='visibility:visible'>"+trivia[aAnswers].answers+"</div>")
       console.log(aAnswers)
+      Time=31
+      isPaused = false
+  
     }
-
     if (aAnswers == 19) {
-      $("#que").text("<h3>Your Results</h3>")
-      $("#succfail").html("<div id=results>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div id=results>Judgment: "+wAnswers+"</div>")
+      isPaused = true
+      $("#que").html('<h3 style="visibility:visible">Your Results</h3>')
+      $("#answ").html("<div id='results'>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div class='text-center'><button id='reset'>RESET</button></div>")
     }
-    }, 2000)
+    }, 3500)
   })
 
   $(document).on("click", ".wrong", function () {
-    $("#answ").html("<div id='succfail'>Wrong! The correct answer was:"+$(".correct")+"</div>")
-    //console.log($(".correct").val())
+    var correctAnswer = $(this).siblings('.correct').text()
+    $("#answ").html("<div id='succfail'>Wrong!<p>The correct answer was:</p>"+correctAnswer+"</div>")
     wAnswers++
     aAnswers++
-    var myVar = setTimeout(function() {
+    isPaused = true
+    var myVar3 = setTimeout(function() {
     if (aAnswers < 19) {
       trivia[aAnswers].answers.sort (function(a,b) {
         return 0.5 - Math.random()
       })
-      $("#que").html("<h3>" + trivia[aAnswers].question + "</h3>")
-      $("#answ").html(trivia[aAnswers].answers)
-      console.log(aAnswers)
+      $("#que").html("<h3 style='visibility:visible'>" + trivia[aAnswers].question + "</h3>")
+      $("#answ").html("<div id='answ' style='visibility:visible'>"+trivia[aAnswers].answers+"</div>")
+      isPaused = false
+      Time= 31
     }
     if (aAnswers == 19) {
-      $("#que").html("<h3>Your Results</h3>")
-      $("#succfail").html("<div id=results>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div id=results>Judgment: "+wAnswers+"</div>")
+      $("#que").html("<h3 style='visibility:visible'>Your Results</h3>")
+      $("#answ").html("<div id='results'>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div class='text-center'><button id='reset'>RESET</button></div>")
+      isPaused = true
     }
-    }, 2000)
-  })  
+    }, 3500)
+  })
+
+  $(document).on("click", "#reset", function() {
+    trivia.sort (function(a, b) {
+      return 0.5 - Math.random()
+    })
+    trivia[0].answers.sort (function(a,b) {
+      return 0.5 - Math.random()
+    })
+    aAnswers = 0
+    cAnswers = 0
+    wAnswers = 0
+    $("#que").html("<h3 style='visibility:visible'>" + trivia[0].question + "</h3>")
+    $("#answ").html("<div style='visibility:visible'>"+trivia[0].answers+"</div>")
+    Time = 30
+    $("#countdown").text(Time+" secs")
+    isPaused = false
+  })
+
 })
+
 </script>
 </body>
 </html>

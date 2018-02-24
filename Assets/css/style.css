@@ -1,21 +1,23 @@
 body {
     background-image: url(../images/diner.jpg);
     background-repeat: no-repeat;
-    background-color: lightblue;
+    background-color: darkslateblue;
     background-size: 1500px 800px;
 }
 
 h1 {
     text-align: center;
     padding: 30px 0px 70px 0px;
-    color: rgb(209, 98, 57);
+    color: white;
     margin: 30px 0px 20px 0px;
-    background-color: rgb(250, 218, 37);
+    background-color: darkslateblue;
     height: 50px;
     font-style: bold;
     text-shadow: 2px 2px black;
     outline-style: dotted;
     outline-width: 5px;
+    outline-color: rgb(58, 14, 14);
+    visibility: hidden;
 }
 row {
     width: 100%;
@@ -30,8 +32,13 @@ h3 {
     line-height: 1.5;
     border-radius: 50px;
     border-style: solid;
-    border-color: rgb(209, 98, 57);
-    border-width: 10px;
+    border-color: coral;
+    border-width: 2px;
+    visibility: hidden;
+}
+
+p {
+    size: 16px;
 }
 
 #que {
@@ -41,14 +48,20 @@ h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-style: bold;
 }
+#answ {
+    visibility: hidden;
+}
 .correct, .wrong {
     padding: 10px;
     font-size: 25px;    
     text-align: center;
     font-family: helvetica;
     font-style: bold;
-    background-color: lightblue;
+    background-color: darkslateblue;
     border-radius: 20px;
+    border-style: solid;
+    border-color: rgb(58, 14, 14);
+    color: white;
 } 
 .correct:hover, .wrong:hover {
     background-color: rgb(58, 14, 14);
@@ -58,8 +71,23 @@ h3 {
     text-align: center;
     padding: 30px;
     font-size: 40px;
-    background-color: lightblue;
+    background-color: darkslateblue;
     border-radius: 50px;
+    color: white;
+    border-style: solid;
+    
+}
+
+#results {
+    text-align: center;
+    padding: 30px;
+    font-size: 40px;
+    background-color: darkslateblue;
+    border-radius: 50px;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
 }
 
 #countdown {
@@ -67,13 +95,43 @@ h3 {
     font-size: 20px;
     color: white;
     width: 105px;
-    background-color: black;
+    background-color: rgb(58, 14, 14);
     border-radius: 50px;
     border-style: dotted;
     padding: 25px 15px 25px 15px;
     margin: 23px 10px 0px 0px;
+    visibility: hidden;
+}
 
+#start {
+    padding: 20px;
+    width: 200px;
+    font-size: 50px;
+    position: relative;
+    bottom: 250px;
+    font-family: "times new roman";
+    background-color: darkslateblue;
+    color: white;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: coral;
 }
 iframe {
     visibility: hidden;
+}
+
+#reset {
+    color: black;
+    background-color: white;
+    font-family: "times new roman";
+    padding: 20px;
+    margin: 20px 0px 0px 0px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: darkslateblue;
+    font-size: 50px;
+    width: 200px;
+}
+#reset:hover {
+    background-color: coral;
 }
