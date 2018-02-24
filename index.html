@@ -230,11 +230,11 @@ $(document).ready(function() {
     ]
     },
     { //19
-      question: "Jerry hates anyone who had one of these animals growing up:",
+      question: "Jerry hates anyone who had one of these animals as a pet growing up:",
       answers: [
         "<div class='wrong'>Golden Retrievers</div>", 
         "<div class='wrong'>Parrots</div>", 
-        "<div class='wrong'>Hampsters</div>", 
+        "<div class='wrong'>Hamsters</div>", 
         "<div class='correct'>Ponies</div>"
     ]
     },
@@ -277,7 +277,7 @@ var myTimer = setInterval(function() {
 }
 
   function timesUp() {
-    if (aAnswers < 19) {
+    if (aAnswers < 21) {
       isPaused = true
       var correctAnswer = $('.correct').text()
       $("#answ").html("<div id='succfail'>Time's Up!<p>The correct answer was:</p>"+correctAnswer+"</div>")
@@ -297,7 +297,7 @@ var myTimer = setInterval(function() {
       }, 3500)
       
     }
-    if (aAnswers == 19) {
+    if (aAnswers == 21) {
       $("#que").html("<h3 style='visibility:visible'>Your Results</h3>")
       $("#answ").html("<div id='results'>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div class='text-center'><button id='reset'>RESET</button></div>")
       isPaused = true
@@ -311,7 +311,7 @@ var myTimer = setInterval(function() {
     isPaused= true
     console.log(aAnswers)
     var myVar2 = setTimeout(function() {
-    if (aAnswers < 19) {
+    if (aAnswers < 21) {
       trivia[aAnswers].answers.sort (function(a,b) {
         return 0.5 - Math.random()
       })
@@ -322,7 +322,7 @@ var myTimer = setInterval(function() {
       isPaused = false
   
     }
-    if (aAnswers == 19) {
+    if (aAnswers == 21) {
       isPaused = true
       $("#que").html('<h3 style="visibility:visible">Your Results</h3>')
       $("#answ").html("<div id='results'>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: "+wAnswers+"</div><div class='text-center'><button id='reset'>RESET</button></div>")
@@ -337,7 +337,7 @@ var myTimer = setInterval(function() {
     aAnswers++
     isPaused = true
     var myVar3 = setTimeout(function() {
-    if (aAnswers < 19) {
+    if (aAnswers < 21) {
       trivia[aAnswers].answers.sort (function(a,b) {
         return 0.5 - Math.random()
       })
@@ -346,7 +346,7 @@ var myTimer = setInterval(function() {
       isPaused = false
       Time= 31
     }
-    if (aAnswers == 19) {
+    if (aAnswers == 21) {
       $("#que").html("<h3 style='visibility:visible'>Your Results</h3>")
       $("#answ").html("<div id='results'>Total Correct: "+cAnswers+"</div><div id=results>Total Incorrect: " + wAnswers + "</div><div class='text-center'><button id='reset'>RESET</button></div>")
       isPaused = true
