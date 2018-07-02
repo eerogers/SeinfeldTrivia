@@ -1,2 +1,2 @@
-Seinfeld Trivia:
+#SeinfeldTrivia
 Upon hitting 'Start', you'll be given 21 Seinfeld trivia questions in randomized order. You must answer each question within the time limit or you will lose a point. Find out once and for all if you're Queen of the Castle, Master of Your Domain, or, alas, not spongeworthy. 
